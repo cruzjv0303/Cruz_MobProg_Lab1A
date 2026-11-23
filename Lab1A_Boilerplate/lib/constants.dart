@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 // Values used in many places: colors for the app.
 // Change these values to fit your own app.

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import '../widgets/newsfeed_card.dart';
 
 // The newsfeed: a list of two posts.
@@ -35,13 +35,13 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
     Post(
       authorName: 'John Joseph Cruz',
       date: 'November 23, 2026',
-      text: 'Kamusta!',
-      likes: 100,
+      text: 'Hello to my million fans around the world!',
+      likes: 999,
       imageAsset: null,
     ),
     Post(
       authorName: "Bryannica Nepomuceno",
-      date: 'December 2',
+      date: 'November 22, 2026',
       text: 'Kicking off the holiday season!',
       likes: 200,
       // TODO: Add an image file named post_image.png to assets/images/,
