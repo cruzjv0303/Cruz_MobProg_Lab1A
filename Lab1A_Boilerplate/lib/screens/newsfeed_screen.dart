@@ -34,7 +34,7 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
   final List<Post> _posts = [
     Post(
       authorName: 'John Joseph Cruz',
-      date: 'October 11',
+      date: 'November 23, 2026',
       text: 'Kamusta!',
       likes: 100,
       imageAsset: null,
