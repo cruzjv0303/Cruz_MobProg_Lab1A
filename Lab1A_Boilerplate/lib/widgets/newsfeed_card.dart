@@ -16,6 +16,7 @@ class NewsFeedCard extends StatelessWidget {
     required this.date,
     required this.text,
     required this.likes,
+    required this.isLiked,
     this.imageAsset,
     this.avatarAsset,
     required this.onLike,
@@ -25,6 +26,7 @@ class NewsFeedCard extends StatelessWidget {
   final String date;
   final String text;
   final int likes;
+  final bool isLiked;
   final String? imageAsset;
   final String? avatarAsset;
   final VoidCallback onLike;
@@ -128,19 +130,27 @@ class NewsFeedCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 _ActionButton(
-                  icon: Icons.thumb_up_outlined,
+                  icon: isLiked ? Icons.thumb_up : Icons.thumb_up_outlined,
                   label: 'Like',
                   onTap: onLike,
+                  iconColor: isLiked ? AppColors.facebookBlue : AppColors.grey,
+                  textColor: isLiked ? AppColors.facebookBlue : AppColors.grey,
+                  fontweight: isLiked ? FontWeight.w600 : FontWeight.normal,
                 ),
                 _ActionButton(
                   icon: Icons.comment_outlined,
                   label: 'Comment',
                   onTap: () {},
+                  iconColor: AppColors.grey,
+                  textColor: AppColors.grey,
+                  fontweight: FontWeight.w600,
                 ),
                 _ActionButton(
                   icon: Icons.share_outlined,
                   label: 'Share',
                   onTap: () {},
+                  iconColor: AppColors.grey,
+                  textColor: AppColors.grey,  
                 ),
               ],
             ),
@@ -170,22 +180,32 @@ class _ActionButton extends StatelessWidget {
     required this.icon,
     required this.label,
     required this.onTap,
+    this.iconColor = AppColors.grey,
+    this.textColor = AppColors.grey,
+    this.fontweight = FontWeight.normal,
   });
 
   final IconData icon;
   final String label;
   final VoidCallback onTap;
+  final Color iconColor;
+  final Color textColor;
+  final FontWeight fontweight;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Row(
-        children: [
-          Icon(icon, color: AppColors.grey, size: 20),
-          SizedBox(width: 6.w),
-          CustomText(text: label, color: AppColors.grey),
-        ],
+      borderRadius: BorderRadius.circular(8.r),
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 8.w),
+        child: Row(
+          children: [
+            Icon(icon, color: iconColor, size: 20),
+            SizedBox(width: 6.w),
+            CustomText(text: label, color: textColor, fontWeight: fontweight),
+          ],
+        ),
       ),
     );
   }

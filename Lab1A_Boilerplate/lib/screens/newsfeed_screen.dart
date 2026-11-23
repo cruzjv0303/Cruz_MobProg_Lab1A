@@ -15,6 +15,7 @@ class Post {
     required this.likes,
     this.avatarAsset,
     this.imageAsset,
+    this.isLiked = false,
   });
 
   final String authorName;
@@ -23,6 +24,7 @@ class Post {
   int likes;
   final String? imageAsset;
   final String? avatarAsset;
+  bool isLiked;
 }
 
 class NewsFeedScreen extends StatefulWidget {
@@ -54,7 +56,13 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
 
   void _likePost(int index) {
     setState(() {
-      _posts[index].likes += 1;
+      if (_posts[index].isLiked) {
+        _posts[index].likes -= 1;
+        _posts[index].isLiked = false;
+      } else {
+        _posts[index].likes += 1;
+        _posts[index].isLiked = true;
+      }
     });
   }
 
@@ -69,6 +77,7 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
           date: post.date,
           text: post.text,
           likes: post.likes,
+          isLiked: post.isLiked,
           avatarAsset: post.avatarAsset,
           imageAsset: post.imageAsset,
           onLike: () => _likePost(index),

@@ -1,4 +1,4 @@
-package com.example.surname_mobprog
+package com.example.cruz_mobprog
 
 import io.flutter.embedding.android.FlutterActivity
 
