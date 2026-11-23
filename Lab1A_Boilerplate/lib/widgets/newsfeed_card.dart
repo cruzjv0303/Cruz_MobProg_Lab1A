@@ -17,6 +17,7 @@ class NewsFeedCard extends StatelessWidget {
     required this.text,
     required this.likes,
     this.imageAsset,
+    this.avatarAsset,
     required this.onLike,
   });
 
@@ -25,6 +26,7 @@ class NewsFeedCard extends StatelessWidget {
   final String text;
   final int likes;
   final String? imageAsset;
+  final String? avatarAsset;
   final VoidCallback onLike;
 
   @override
@@ -46,7 +48,7 @@ class NewsFeedCard extends StatelessWidget {
                 CircleAvatar(
                   radius: 20.r,
                   backgroundColor: AppColors.lightGrey,
-                  child: const Icon(Icons.person, color: AppColors.grey),
+                  backgroundImage: avatarAsset != null ? AssetImage(avatarAsset!) : null,
                 ),
                 SizedBox(width: 10.w),
                 Column(
